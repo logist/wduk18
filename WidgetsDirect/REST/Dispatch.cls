@@ -20,7 +20,7 @@ ClassMethod HelloWorld(Name As %String = "") As %Status
 	Set %response.ContentType="application/json"
 	
 	SET retObj = {}
-	SET retMessage = "Welcome, hehe "_Name
+	SET retMessage = "Welcome, "_$zv_" "_Name
 	SET retObj.Message = retMessage
 
 	
