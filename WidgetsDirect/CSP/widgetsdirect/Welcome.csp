@@ -1,0 +1,61 @@
+<html ng-app="WidgetsDirect">
+<head>
+
+<!-- Put your page Title here -->
+<title>	Widgets Direct </title>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+</head>
+
+<body ng-controller="PageController">
+
+		<!-- This is our static ToolBar -->
+		<div>
+		<md-toolbar class="md-hue">
+		 <h2 class="md-toolbar-tools">
+		 	<span>{{message}}</span>
+		 </h2>
+		</md-toolbar>
+		</div>
+		<div layout="column">
+		<!-- Page content starts here -->
+		<div layout="row">
+		<md-input-container style="margin:5px;" flex=85>
+                <label>Filter</label>
+                <input type="text" ng-model="widgetFilterText">
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click="sortAsc=!sortAsc" flex>Reorder</md-button>
+        </div>
+        <!-- List of Widgets starts here -->    
+		<md-card ng-repeat="widget in widgets | filter : widgetFilterText |  orderBy: !sortAsc ? 'Id' : '-Id'" ng-controller="WidgetController">
+         <md-card-header>
+          <md-card-avatar>
+           <img src="img/logo.svg"/>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">Widgets Direct - {{widget.Id}}</span>
+            <span class="md-subhead">{{widget.Name}} - ${{widget.Price}}</span>
+            <span class="md-subhead">There are {{widget.Accessories.length}} compatible accessories </span>
+          </md-card-header-text>
+         </md-card-header>
+         <md-card-content ng-click="editWidget($event,widget)">
+          <p>
+            {{widget.Description}}
+          </p>
+         </md-card-content>
+       </md-card>
+      </div>
+		<hr>
+<!-- AngularJS Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<!--AngularMaterial Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<!--User Libraries -->
+<script src="widgetmaster.js"></script>		
+<script src="modules/page/pageController.js"></script>
+<script src="modules/widget/WidgetController.js"></script>		
+</body>
+ 
+</html>

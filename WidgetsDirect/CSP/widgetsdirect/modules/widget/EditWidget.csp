@@ -1,0 +1,32 @@
+<md-dialog aria-label="Edit Widget" style="width:80%">
+   <md-dialog-content  >
+      <form name="WidgetForm">
+      <md-toolbar md-whiteframe="4" ng-cloak>
+       <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <h2 class="md-flex"> Edit Widget <i>{{newwidget.Name}}</i> </h2>
+       </div>
+      </md-toolbar>
+       <div layout="column" flex >
+		<md-input-container style="margin:10px;" flex>
+          <label>Name</label>
+          <input type="text" required ng-model="newwidget.Name">
+        </md-input-container>
+        <md-input-container style="margin:5px;" flex>
+          <label>Description</label>
+          <input type="textarea" required ng-model="newwidget.Description">
+        </md-input-container>
+        <md-input-container style="margin:5px;" flex>
+          <label>Price</label>
+          <input type="text" ng-model="newwidget.Price">
+        </md-input-container>
+        <md-input-container style="margin:5px;" flex>
+          <label>Quantity</label>
+          <input type="text" ng-model="newwidget.Quantity">
+        </md-input-container>
+        <md-button class="md-raised" ng-click="saveWidget(newwidget)" ng-disabled="WidgetForm.$invalid">
+          Save Widget
+        </md-button>
+        </div>
+        </form>
+ </md-dialog-content>
+</md-dialog>
